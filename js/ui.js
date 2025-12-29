@@ -114,26 +114,35 @@ const UI = {
      */
     showQRModal(url) {
         const modal = document.createElement('div');
-        modal.className = 'qr-modal animate-fade-in';
+        modal.className = 'qr-modal';
         modal.innerHTML = `
             <div class="qr-content animate-scale-up">
+                <button class="btn-close" aria-label="Close modal"><i class="fas fa-times"></i></button>
                 <div class="qr-header">
-                    <h3>Link QR Code</h3>
-                    <button class="btn-close" onclick="this.closest('.qr-modal').remove()"><i class="fas fa-times"></i></button>
+                    <h3>QR Code</h3>
                 </div>
                 <div class="qr-image-container">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(url)}" alt="QR Code" onload="this.classList.add('loaded')">
-                    <div class="qr-skeleton"></div>
+                    <div class="qr-skeleton"><i class="fas fa-circle-notch fa-spin" style="color: var(--primary); font-size: 2rem;"></i></div>
                 </div>
                 <div class="qr-footer">
-                    <button class="btn-primary btn-full" onclick="this.closest('.qr-modal').remove()">Done</button>
+                    <button class="btn-primary btn-full" id="modal-done-btn">Done</button>
                 </div>
             </div>
         `;
         document.body.appendChild(modal);
         
+        const closeModal = () => {
+            modal.style.opacity = '0';
+            modal.querySelector('.qr-content').style.transform = 'scale(0.95)';
+            setTimeout(() => modal.remove(), 200);
+        };
+
+        // Event Listeners
+        modal.querySelector('.btn-close').addEventListener('click', closeModal);
+        modal.querySelector('#modal-done-btn').addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.remove();
+            if (e.target === modal) closeModal();
         });
     }
 };
