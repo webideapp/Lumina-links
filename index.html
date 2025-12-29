@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LuminaLinks | Premium Link Shortening</title>
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <header class="navbar">
+            <div class="container nav-wrapper">
+                <div class="logo-group">
+                    <div class="logo-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <span class="logo-text">Lumina<span>Links</span></span>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#dashboard">Dashboard</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="#" class="btn-primary btn-sm">Get Started</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Experience the Power of <span class="text-gradient">Smarter Links</span></h1>
+                        <p class="hero-subtitle">Transform your long, cluttered URLs into clean, powerful, and trackable short links in seconds.</p>
+                        
+                        <div class="url-input-container">
+                            <form id="shorten-form" class="shorten-form">
+                                <div class="input-wrapper">
+                                    <i class="fas fa-link input-icon"></i>
+                                    <input type="url" id="url-input" placeholder="Paste your long link here..." required="">
+                                </div>
+                                <button type="submit" id="shorten-btn" class="btn-primary">
+                                    <span>Shorten</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </form>
+                            <div class="input-helper">Free to use. Professional grade analytics coming soon.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-bg-accent"></div>
+            </section>
+
+            <!-- Results Dashboard -->
+            <section id="dashboard" class="dashboard-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Links</h2>
+                        <p class="section-desc">Your shortened URLs are saved locally for quick access.</p>
+                    </div>
+                    
+                    <div id="links-list" class="links-grid">
+                        <!-- Dynamic content injected via ui.js -->
+                        <div class="empty-state">
+                            <div class="empty-icon"><i class="fas fa-history"></i></div>
+                            <p>No links shortened yet. Your history will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                            <h3>Lightning Fast</h3>
+                            <p>Powered by ShrinkMe.io API for rapid link generation and redirection.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-qrcode"></i></div>
+                            <h3>QR Integration</h3>
+                            <p>Instant QR code generation for every link you create, perfect for offline sharing.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                            <h3>Secure &amp; Private</h3>
+                            <p>Your data is stored locally in your browser. We don't track your personal identity.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <span class="logo-text">Lumina<span>Links</span></span>
+                        <p>Elevating the standard of link management.</p>
+                    </div>
+                    <div class="footer-copy">
+                        © 2024 LuminaLinks. Powered by ShrinkMe.io
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Notification Container -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="script.js"></script>
+
+</body></html>
