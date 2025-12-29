@@ -1,0 +1,22 @@
+{
+  "name": "lumina-links",
+  "version": "1.0.0",
+  "description": "LuminaLinks - Premium URL Shortener",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Start development server'",
+    "build": "echo 'Build for production'",
+    "start": "echo 'Start server'"
+  },
+  "keywords": [
+    "url-shortener",
+    "link-management",
+    "qr-code"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.2.0"
+  }
+}
