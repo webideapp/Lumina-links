@@ -178,6 +178,10 @@ h1, h2, h3, h4, .logo-text {
     transform: translateY(0);
 }
 
+.btn-full {
+    width: 100%;
+}
+
 .btn-sm {
     padding: 0.6rem 1.25rem;
     font-size: 0.875rem;
@@ -456,37 +460,21 @@ h1, h2, h3, h4, .logo-text {
 }
 
 .feature-icon {
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     background: var(--ring-color);
     color: var(--primary);
     border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-}
-
-.feature-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
 }
 
 /* Toast Styling */
 .toast-container {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 2rem; right: 2rem;
     z-index: 2000;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
     pointer-events: none;
 }
 
@@ -499,17 +487,11 @@ h1, h2, h3, h4, .logo-text {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
+    display: flex; align-items: center; gap: 0.875rem;
     animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.toast.success i { color: #10b981; }
-.toast.error i { color: #ef4444; }
-.toast.info i { color: var(--primary); }
-
-/* Modal QR Code */
+/* Modal QR Code - Improved */
 .qr-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -521,33 +503,92 @@ h1, h2, h3, h4, .logo-text {
 }
 
 .qr-content {
+    position: relative;
     background: var(--bg-card);
     padding: 2.5rem;
     border-radius: var(--radius-lg);
     text-align: center;
-    max-width: 360px;
+    max-width: 380px;
     width: 90%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
 }
 
-.qr-content h3 {
+.qr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
 }
 
-.qr-image {
-    width: 240px; height: 240px;
-    margin: 0 auto 1.5rem;
+.qr-header h3 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+/* Positioned Cancel/Close Icon */
+.btn-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.btn-close:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    border-color: #fecaca;
+    transform: rotate(90deg);
+}
+
+.qr-image-container {
+    width: 260px; height: 260px;
+    margin: 0 auto 2rem;
+    position: relative;
     border: 1px solid var(--border-color);
     padding: 1rem;
     background: white;
     border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.qr-image img {
-    width: 100%;
-    height: 100%;
+.qr-image-container img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.qr-image-container img.loaded {
+    opacity: 1;
+}
+
+.qr-skeleton {
+    position: absolute;
+    inset: 1rem;
+    background: var(--bg-main);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.qr-image-container img.loaded + .qr-skeleton {
+    display: none;
 }
 
 /* Footer */
@@ -574,16 +615,15 @@ h1, h2, h3, h4, .logo-text {
     font-size: 0.875rem;
 }
 
-/* Loading Shimmer (used for skeletons) */
-.shimmer {
-    background: linear-gradient(
-        90deg,
-        var(--bg-main) 25%,
-        var(--border-color) 50%,
-        var(--bg-main) 75%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 /* Responsive Breakpoints */
